@@ -57,8 +57,6 @@ contract LPChamber is SharedGovernance {
 
     event VoteCasted(address indexed voter, uint256 indexed pid, bool isFor);
 
-    event TokenWhiteListed(address indexed token);
-
     function newProposal(address targetGovernor, bytes calldata data, address proposer, string calldata description) external {
         require(hasRole(QUAD_CHAMBER_ROLE, msg.sender), "Sender isn't the quad chamber");
         (uint256 quorumBips, uint256 majorityBips) = getGovernorData(targetGovernor);

@@ -21,6 +21,8 @@ abstract contract SharedGovernance is RemoteAccessControl {
     bytes32 internal constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
     bytes32 internal constant QUAD_CHAMBER_ROLE = keccak256("QUAD_CHAMBER_ROLE");
     bytes32 internal constant LP_CHAMBER_ROLE = keccak256("LP_CHAMBER_ROLE");
+    bytes32 internal constant NO_FEE_ROLE = keccak256("NO_FEE_ROLE");
+    bytes32 internal constant NO_FEE_RECIPIENT_ROLE = keccak256("NO_FEE_RECIPIENT_ROLE");
 
     uint256 public proposalsDeadline;
 
@@ -35,6 +37,8 @@ abstract contract SharedGovernance is RemoteAccessControl {
         defaultGovernorRequirements.quorumBips = defaultQuorumBips;
         defaultGovernorRequirements.majorityBips = defaultMajorityBips;
 
+        requestRole(NO_FEE_ROLE, address(this), false);
+        requestRole(NO_FEE_RECIPIENT_ROLE, address(this), false);
         subscribe(GOVERNOR_ROLE, GOVERNANCE_ROLE);
     }
 

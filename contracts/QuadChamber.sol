@@ -52,7 +52,6 @@ contract QuadChamber is SharedGovernance {
     }
 
     event VoteCasted(address indexed voter, uint256 indexed pid, bool isFor);
-    //add ffs
     event ProposalLockBipsChanged(uint256 indexed newAmount, uint256 indexed oldAmount);
 
     function newProposal(address targetGovernor, bytes calldata data, string calldata description) external {
